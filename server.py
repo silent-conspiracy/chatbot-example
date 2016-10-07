@@ -27,9 +27,9 @@ def handle_verification():
 def handle_incoming_messages():
     data = request.json
     print data
-    #sender = data['entry'][0]['messaging'][0]['sender']['id']
-    #message = data['entry'][0]['messaging'][0]['message']['text']
-    #reply(sender, message)
+    sender = data['entry'][0]['messaging'][0]['sender']['id']
+    message = data['entry'][0]['messaging'][0]['message']['text']
+    reply(sender, message)
 
     return "ok"
 
