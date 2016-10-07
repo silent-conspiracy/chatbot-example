@@ -29,7 +29,7 @@ def handle_incoming_messages():
     for entry in data['entry']:
         for message_item in entry['messaging']:
             sender = message_item['sender']['id']
-            if message_item['message']:
+            if message_item.get('message'):
                 message = message_item['message']['text']
                 reply(sender, message)
     return "ok"
