@@ -26,11 +26,12 @@ def handle_verification():
 @app.route('/webhooks', methods=['POST'])
 def handle_incoming_messages():
     data = request.json
-    print data
-    sender = data['entry'][0]['messaging'][0]['sender']['id']
-    message = data['entry'][0]['messaging'][0]['message']['text']
-    reply(sender, message)
-
+    for entry in data['entry']:
+        for message_item in entry['messaging']:
+            sender = message_item['sender']['id']
+            if message_item['message']:
+                message = message_item['message']['text']
+                reply(sender, message)
     return "ok"
 
 
